@@ -1400,6 +1400,7 @@ static int functionfs_bind(struct ffs_data *ffs, struct usb_composite_dev *cdev)
 		int id = first_id;
 		for (; str->s; ++id, ++str)
 			str->id = id;
+		} while (*lang);
 	}
 
 	ffs->gadget = cdev->gadget;
