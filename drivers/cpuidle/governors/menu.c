@@ -253,7 +253,6 @@ static int menu_select(struct cpuidle_device *dev)
 	data->expected_us =
 	    DIV_ROUND_UP((u32)ktime_to_ns(tick_nohz_get_sleep_length()), 1000);
 
-
 	data->bucket = which_bucket(data->expected_us);
 
 	multiplier = performance_multiplier();
