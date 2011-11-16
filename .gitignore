@@ -77,3 +77,8 @@ GTAGS
 *.orig
 *~
 \#*#
+
+# Huexxx mods
+arch/arm/boot/compressed/lib1funcs.S
+arch/arm/boot/compressed/vmlinux
+
