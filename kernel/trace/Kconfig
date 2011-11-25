@@ -5,6 +5,7 @@
 
 config USER_STACKTRACE_SUPPORT
 	bool
+	default n
 
 config NOP_TRACER
 	bool
@@ -16,6 +17,7 @@ config HAVE_FTRACE_NMI_ENTER
 
 config HAVE_FUNCTION_TRACER
 	bool
+	default n
 	help
 	  See Documentation/trace/ftrace-design.txt
 
@@ -106,7 +108,7 @@ config TRACING_SUPPORT
 	# irqflags tracing for your architecture.
 	depends on TRACE_IRQFLAGS_SUPPORT || PPC32
 	depends on STACKTRACE_SUPPORT
-	default y
+	default n
 
 if TRACING_SUPPORT
 
@@ -125,6 +127,7 @@ config FUNCTION_TRACER
 	select KALLSYMS
 	select GENERIC_TRACER
 	select CONTEXT_SWITCH_TRACER
+	default n
 	help
 	  Enable the kernel to trace every kernel function. This is done
 	  by using a compiler feature to insert a small, 5-byte No-Operation
@@ -226,6 +229,7 @@ config FTRACE_SYSCALLS
 	depends on HAVE_SYSCALL_TRACEPOINTS
 	select GENERIC_TRACER
 	select KALLSYMS
+	default n
 	help
 	  Basic tracer to catch the syscall entry and exit events.
 
@@ -448,7 +452,7 @@ config DYNAMIC_FTRACE
 	bool "enable/disable ftrace tracepoints dynamically"
 	depends on FUNCTION_TRACER
 	depends on HAVE_DYNAMIC_FTRACE
-	default y
+	default n
 	help
           This option will modify all the calls to ftrace dynamically
 	  (will patch them out of the binary image and replace them
@@ -478,7 +482,7 @@ config FUNCTION_PROFILER
 	  If in doubt, say N.
 
 config FTRACE_MCOUNT_RECORD
-	def_bool y
+	def_bool n
 	depends on DYNAMIC_FTRACE
 	depends on HAVE_FTRACE_MCOUNT_RECORD
 
