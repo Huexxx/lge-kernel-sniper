@@ -343,16 +343,17 @@ not_relocated:	mov	r0, #0
  */
 		
 		mov  	r0, r4
-		mov  	r1, sp      @ malloc space above stack
-		add  	r2, sp, #0x10000  @ 64k max
+		mov  	r1, sp      		@ malloc space above stack
+		add  	r2, sp, #0x10000  	@ 64k max
 		mov	r3, r7
 		bl	decompress_kernel
 		bl	cache_clean_flush
 		bl  	cache_off
-		mov  	r0, #0      @ must be zero
-		mov  	r1, r7      @ restore architecture number
-		mov  	r2, r8      @ restore atags pointer
-		mov  	pc, r4      @ call kernel
+		mov  	r0, #0      		@ must be zero
+		mov  	r1, r7      		@ restore architecture number
+		mov  	r2, r8      		@ restore atags pointer
+ ARM(		mov	pc, r4	)		@ call kernel
+ THUMB(		bx	r4	)		@ entry point is always ARM
 
 		.align	2
 		.type	LC0, #object
